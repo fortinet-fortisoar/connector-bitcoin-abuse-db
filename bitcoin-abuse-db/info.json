@@ -1,0 +1,182 @@
+{
+    "name": "bitcoin-abuse-db",
+    "version": "1.0.0",
+    "label": "Bitcoin Abuse DB",
+    "description": "BitcoinAbuse.com is a public database of bitcoin addresses used by scammers, hackers, and criminals. This connector lets you tracking bitcoin addresses used by ransomware, blackmailers, fraudsters, etc.",
+    "publisher": "spryIQ.co",
+    "icon_small_name": "bitcoinabusedb32x32.png",
+    "icon_large_name": "bitcoinabusedb80x80.png",
+    "category": "Vulnerability and Risk Management",
+    "help_online": "https://github.com/bidisha-spryiq/connector-bitcoin-abuse-db/blob/develop/docs/BitcoinAbuseDBConnectorDoc.md",
+    "cs_compatible": true,
+    "cs_approved": false,
+    "configuration": {
+        "fields": [
+            {
+                "title": "Server URL",
+                "type": "text",
+                "name": "server",
+                "description": "URL of the bitcoin-abuse-db connector to access the connector website.",
+                "tooltip": "URL of the bitcoin-abuse-db connector to access the connector website.",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "www.bitcoinabuse.com",
+                "placeholder": "E.g. https://www.bitcoinabuse.com or www.bitcoinabuse.com"
+            }
+        ]
+    },
+    "operations": [
+        {
+            "operation": "get_lookup_abuse_types",
+            "title": "Get Lookup Abuse Types",
+            "description": "Look up the abuse_type_id for use with the report address API.",
+            "category": "investigation",
+            "annotation": "lookup_abuse_type",
+            "output_schema": [
+                {
+                    "id": "",
+                    "label": ""
+                }
+            ],
+            "parameters": [],
+            "enable": true
+        },
+        {
+            "operation": "get_lookup_distinct_reports",
+            "title": "Get Lookup Distinct Reports",
+            "description": "This report is cached and only updates once per hour.",
+            "category": "investigation",
+            "annotation": "lookup_abuse_type",
+            "output_schema": {
+                "current_page": "",
+                "data": [],
+                "first_page_url": "",
+                "from": "",
+                "next_page_url": "",
+                "path": "",
+                "per_page": "",
+                "prev_page_url": "",
+                "to": ""
+            },
+            "parameters": [
+                {
+                    "title": "Api Token",
+                    "type": "password",
+                    "name": "api_token",
+                    "description": "Api token required for authentication.",
+                    "tooltip": "Api token required for authentication.",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "JsrCuUi0ddWNK84UTDdaawBCinPdnv6dAdU10hXUW"
+                },
+                {
+                    "name": "page",
+                    "title": "Page",
+                    "type": "integer",
+                    "description": "Provide only to get details of any particular page.",
+                    "tooltip": "Provide only to get details of any particular page. By default it is 1",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "placeholder": "Great than or equal to 1."
+                },
+                {
+                    "name": "reverse",
+                    "title": "Reverse",
+                    "type": "text",
+                    "description": "Reverse the order of reports. So, oldest reports are first.",
+                    "tooltip": "Reverse the order of reports. By default it is False.",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "placeholder": "true"
+                }
+            ],
+            "enable": true
+        },
+        {
+            "operation": "check_given_address",
+            "title": "Check Address",
+            "description": "Provide details of the given address. This report is cached and only updates once per hour.",
+            "category": "investigation",
+            "annotation": "check_given_address",
+            "output_schema": {
+                "address": "",
+                "count": "",
+                "first_seen": "",
+                "last_seen": "",
+                "recent": [
+                    {
+                        "abuse_type_id": "",
+                        "abuse_type_other": "",
+                        "description": "",
+                        "created_at": ""
+                    }
+                ]
+            },
+            "parameters": [
+                {
+                    "title": "Api Token",
+                    "type": "password",
+                    "name": "api_token",
+                    "description": "Api token required for authentication.",
+                    "tooltip": "Api token required for authentication.",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "JsrCuUi0ddWNK84UTDdaawBCinPdnv6dAdU10hXUW"
+                },
+                {
+                    "name": "address",
+                    "title": "Address",
+                    "type": "text",
+                    "description": "Provide the lookup address.",
+                    "tooltip": "Provide the lookup address.",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "placeholder": "19hFKVhXZXvqGAL6GfTZdeJtYD3XLcttbZ"
+                }
+            ],
+            "enable": true
+        },
+        {
+            "operation": "get_all_reports",
+            "title": "Get Complete Download",
+            "description": "Returns a CSV file containing all reports within the given time period. The \"1d\" file is updated daily in the early morning. The \"30d\" file is updated weekly on Sunday morning. The \"forever\" file is updated monthly on the 15th of the month. All updates occur between 2am-3am UTC.",
+            "category": "investigation",
+            "annotation": "get_all_reports",
+            "output_schema": "",
+            "parameters": [
+                {
+                    "title": "Api Token",
+                    "type": "password",
+                    "name": "api_token",
+                    "description": "Api token required for authentication.",
+                    "tooltip": "Api token required for authentication.",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "JsrCuUi0ddWNK84UTDdaawBCinPdnv6dAdU10hXUW"
+                },
+                {
+                    "name": "time_period",
+                    "title": "Time Period",
+                    "type": "text",
+                    "description": "Allowed options are 1d, 30d, or forever.",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "1d",
+                    "placeholder": "1d, 30d, or forever"
+                }
+            ],
+            "enable": true
+        }
+    ]
+}
