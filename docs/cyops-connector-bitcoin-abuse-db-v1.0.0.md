@@ -100,9 +100,9 @@ The output contains a non-dictionary value.
 ## Included playbooks
 The `Sample - bitcoin-abuse-db - 1.0.0` playbook collection comes bundled with the Bitcoin Abuse DB connector. These playbooks contain steps using which you can perform all supported actions. You can see bundled playbooks in the **Automation** > **Playbooks** section in FortiSOAR<sup>TM</sup> after importing the Bitcoin Abuse DB connector.
 
-- Get Lookup Abuse Types
-- Get Lookup Distinct Reports
 - Check Address
 - Get Complete Download
+- Get Lookup Abuse Types
+- Get Lookup Distinct Reports
 
 **Note**: If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.
