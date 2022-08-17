@@ -23,7 +23,17 @@
                 "editable": true,
                 "value": "www.bitcoinabuse.com",
                 "placeholder": "E.g. https://www.bitcoinabuse.com or www.bitcoinabuse.com"
-            }
+            },
+            {
+                    "title": "Api Token",
+                    "type": "password",
+                    "name": "api_token",
+                    "description": "Api token required for authentication.",
+                    "tooltip": "Api token required for authentication.",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                }
         ]
     },
     "operations": [
@@ -61,18 +71,6 @@
             },
             "parameters": [
                 {
-                    "title": "Api Token",
-                    "type": "password",
-                    "name": "api_token",
-                    "description": "Api token required for authentication.",
-                    "tooltip": "Api token required for authentication.",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "JsrCuUi0ddWNK84UTDdaawBCinPdnv6dAdU10hXUW"
-                },
-                {
                     "name": "page",
                     "title": "Page",
                     "type": "integer",
@@ -86,13 +84,13 @@
                 {
                     "name": "reverse",
                     "title": "Reverse",
-                    "type": "text",
+                    "type": "checkbox",
+                    "value": false,
                     "description": "Reverse the order of reports. So, oldest reports are first.",
                     "tooltip": "Reverse the order of reports. By default it is False.",
                     "required": false,
                     "visible": true,
-                    "editable": true,
-                    "placeholder": "true"
+                    "editable": true
                 }
             ],
             "enable": true
@@ -119,18 +117,6 @@
             },
             "parameters": [
                 {
-                    "title": "Api Token",
-                    "type": "password",
-                    "name": "api_token",
-                    "description": "Api token required for authentication.",
-                    "tooltip": "Api token required for authentication.",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "JsrCuUi0ddWNK84UTDdaawBCinPdnv6dAdU10hXUW"
-                },
-                {
                     "name": "address",
                     "title": "Address",
                     "type": "text",
@@ -152,18 +138,6 @@
             "annotation": "get_all_reports",
             "output_schema": "",
             "parameters": [
-                {
-                    "title": "Api Token",
-                    "type": "password",
-                    "name": "api_token",
-                    "description": "Api token required for authentication.",
-                    "tooltip": "Api token required for authentication.",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "JsrCuUi0ddWNK84UTDdaawBCinPdnv6dAdU10hXUW"
-                },
                 {
                     "name": "time_period",
                     "title": "Time Period",

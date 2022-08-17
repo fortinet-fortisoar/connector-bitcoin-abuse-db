@@ -21,7 +21,7 @@ class BitcoinAbuseDB(object):
         url = self.base_url + endpoint
         logger.debug('Final url to make rest call is: {0}'.format(url))
         try:
-            logger.info(
+            logger.debug(
                 'Making a request with {0} method, {1} params.'.format(method, params))
             response = requests.request(method, url, params=params)
             if response.status_code in [200]:
@@ -77,6 +77,7 @@ def _check_health(config):
         if server_config['status'] == 'Failure':
             logger.exception('Authentication Error, Check URL and API Token.')
             raise ConnectorError('Authentication Error, Check URL and API Token.')
+        return True
     except Exception as Err:
         logger.exception('Health check failed with: {0}'.format(Err))
         raise ConnectorError('Health check failed with: {0}'.format(Err))

@@ -26,6 +26,7 @@ For the procedure to configure a connector, click [here](https://docs.fortinet.c
 ### Configuration parameters
 <p>In FortiSOAR&trade;, on the Connectors page, click the <strong>Bitcoin Abuse DB</strong> connector row (if you are in the <strong>Grid</strong> view on the Connectors page) and in the <strong>Configurations&nbsp;</strong> tab enter the required configuration details:&nbsp;</p>
 <table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Server URL<br></td><td>URL of the bitcoin-abuse-db connector to access the connector website.<br>
+<tr><td>Api Token<br></td><td>Api token required for authentication.<br>
 </tbody></table>
 
 ## Actions supported by the connector
@@ -47,8 +48,7 @@ The output contains the following populated JSON schema:
 </code><code><br>}</code>
 ### operation: Get Lookup Distinct Reports
 #### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Api Token<br></td><td>Api token required for authentication.<br>
-</td></tr><tr><td>Page<br></td><td>Provide only to get details of any particular page.<br>
+<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Page<br></td><td>Provide only to get details of any particular page.<br>
 </td></tr><tr><td>Reverse<br></td><td>Reverse the order of reports. So, oldest reports are first.<br>
 </td></tr></tbody></table>
 
@@ -67,8 +67,7 @@ The output contains the following populated JSON schema:
 </code><code><br>}</code>
 ### operation: Check Address
 #### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Api Token<br></td><td>Api token required for authentication.<br>
-</td></tr><tr><td>Address<br></td><td>Provide the lookup address.<br>
+<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Address<br></td><td>Provide the lookup address.<br>
 </td></tr></tbody></table>
 
 #### Output
@@ -89,8 +88,7 @@ The output contains the following populated JSON schema:
 </code><code><br>}</code>
 ### operation: Get Complete Download
 #### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Api Token<br></td><td>Api token required for authentication.<br>
-</td></tr><tr><td>Time Period<br></td><td>Allowed options are 1d, 30d, or forever.<br>
+<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Time Period<br></td><td>Allowed options are 1d, 30d, or forever.<br>
 </td></tr></tbody></table>
 
 #### Output
