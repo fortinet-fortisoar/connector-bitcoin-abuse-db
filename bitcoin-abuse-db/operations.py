@@ -16,6 +16,7 @@ class BitcoinAbuseDB(object):
         self.base_url = config.get('server').strip() + '/api'
         if not self.base_url.startswith('https://'):
             self.base_url = 'https://' + self.base_url
+        self.api_token = config.get('api_token')
 
     def make_rest_call(self, endpoint=None, method='GET', params=None, csv_content=False):
         url = self.base_url + endpoint
@@ -51,15 +52,15 @@ class BitcoinAbuseDB(object):
         return self.make_rest_call(endpoint='/abuse-types')
 
     def get_lookup_distinct_reports(self, params):
-        data = {'api_token': params.get('api_token'), 'page': params.get('page'), 'reverse': params.get('reverse')}
+        data = {'api_token': self.api_token, 'page': params.get('page'), 'reverse': params.get('reverse')}
         return self.make_rest_call(endpoint='/reports/distinct', params=data)
 
     def check_given_address(self, params):
-        data = {'api_token': params.get('api_token'), 'address': params.get('address')}
+        data = {'api_token': self.api_token, 'address': params.get('address')}
         return self.make_rest_call(endpoint='/reports/check', params=data)
 
     def get_all_reports(self, params):
-        data = {'api_token': params.get('api_token')}
+        data = {'api_token': self.api_token}
         return self.make_rest_call(endpoint='/download/' + str(params.get('time_period')), params=data, csv_content=True)
 
 
@@ -74,7 +75,7 @@ def _check_health(config):
     try:
         ba_obj = BitcoinAbuseDB(config)
         server_config = ba_obj.make_rest_call(endpoint='/abuse-types')
-        if server_config['status'] == 'Failure':
+        if server_config['status'] == 'Failure' or not ba_obj.api_token:
             logger.exception('Authentication Error, Check URL and API Token.')
             raise ConnectorError('Authentication Error, Check URL and API Token.')
         return True
