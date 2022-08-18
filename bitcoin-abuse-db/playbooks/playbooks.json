@@ -1,0 +1,338 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "7a41043b-ebb4-4b4c-9c0c-f8f171ae6fba",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Bitcoin Abuse DB - 1.0.0",
+      "description": "BitcoinAbuse.com is a public database of bitcoin addresses used by scammers, hackers, and criminals. This connector lets you tracking bitcoin addresses used by ransomware, blackmailers, fraudsters, etc.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "bitcoin-abuse-db"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "649f4655-0e80-43f0-b0fa-06db9ff00468",
+          "collection": "/api/3/workflow_collections/7a41043b-ebb4-4b4c-9c0c-f8f171ae6fba",
+          "triggerLimit": null,
+          "description": "Look up the abuse_type_id for use with the report address API.",
+          "name": "Get Lookup Abuse Types",
+          "tag": "#Bitcoin Abuse DB",
+          "recordTags": [
+            "bitcoin-abuse-db"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/fa2f8db0-d1e9-4bd3-a1a2-79a8054e2b13",
+          "steps": [
+            {
+              "uuid": "fa2f8db0-d1e9-4bd3-a1a2-79a8054e2b13",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "aadaa300-5f0c-42d7-8828-8da6da3a0769",
+                "title": "Bitcoin Abuse DB: Get Lookup Abuse Types",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ece3c1da-b8fc-4a04-9cb6-1980c6827418",
+              "@type": "WorkflowStep",
+              "name": "Get Lookup Abuse Types",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitcoin Abuse DB",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "bitcoin-abuse-db",
+                "operation": "get_lookup_abuse_types",
+                "operationTitle": "Get Lookup Abuse Types",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d0f44d2f-60a4-494a-90ed-13f42f731182",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Lookup Abuse Types",
+              "sourceStep": "/api/3/workflow_steps/fa2f8db0-d1e9-4bd3-a1a2-79a8054e2b13",
+              "targetStep": "/api/3/workflow_steps/ece3c1da-b8fc-4a04-9cb6-1980c6827418"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "1d9a7837-629c-4d91-b83c-63ecbb5c1e22",
+          "collection": "/api/3/workflow_collections/7a41043b-ebb4-4b4c-9c0c-f8f171ae6fba",
+          "triggerLimit": null,
+          "description": "This report is cached and only updates once per hour.",
+          "name": "Get Lookup Distinct Reports",
+          "tag": "#Bitcoin Abuse DB",
+          "recordTags": [
+            "bitcoin-abuse-db"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/75789b63-16b5-4c91-b416-a64893c7d755",
+          "steps": [
+            {
+              "uuid": "75789b63-16b5-4c91-b416-a64893c7d755",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "eacdce98-8cbf-4f24-837c-fcc16d6af7e4",
+                "title": "Bitcoin Abuse DB: Get Lookup Distinct Reports",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "2df4d1b7-85db-485c-9ecb-603b8105fa6b",
+              "@type": "WorkflowStep",
+              "name": "Get Lookup Distinct Reports",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitcoin Abuse DB",
+                "config": "''",
+                "params": {
+                  "reverse": false
+                },
+                "version": "1.0.0",
+                "connector": "bitcoin-abuse-db",
+                "operation": "get_lookup_distinct_reports",
+                "operationTitle": "Get Lookup Distinct Reports",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "9500ac71-a860-42b2-852b-4935b5e7ddfa",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Lookup Distinct Reports",
+              "sourceStep": "/api/3/workflow_steps/75789b63-16b5-4c91-b416-a64893c7d755",
+              "targetStep": "/api/3/workflow_steps/2df4d1b7-85db-485c-9ecb-603b8105fa6b"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "dfb577ec-c303-4abf-9913-eee4ae6b2fd8",
+          "collection": "/api/3/workflow_collections/7a41043b-ebb4-4b4c-9c0c-f8f171ae6fba",
+          "triggerLimit": null,
+          "description": "Provide details of the given address. This report is cached and only updates once per hour.",
+          "name": "Check Address",
+          "tag": "#Bitcoin Abuse DB",
+          "recordTags": [
+            "bitcoin-abuse-db"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e0d0aecd-72ad-4c26-b1be-79ea0f8265a8",
+          "steps": [
+            {
+              "uuid": "e0d0aecd-72ad-4c26-b1be-79ea0f8265a8",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "1eb2c91f-43fa-4c86-94cd-35aade95e44f",
+                "title": "Bitcoin Abuse DB: Check Address",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "8dd00d7a-cd98-4ca5-8116-a12c8de83d73",
+              "@type": "WorkflowStep",
+              "name": "Check Address",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitcoin Abuse DB",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "bitcoin-abuse-db",
+                "operation": "check_given_address",
+                "operationTitle": "Check Address",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "063db793-b456-44d7-875e-c0df7b913af9",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Check Address",
+              "sourceStep": "/api/3/workflow_steps/e0d0aecd-72ad-4c26-b1be-79ea0f8265a8",
+              "targetStep": "/api/3/workflow_steps/8dd00d7a-cd98-4ca5-8116-a12c8de83d73"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "5533aece-34e9-4872-a7a1-5efbf7675a13",
+          "collection": "/api/3/workflow_collections/7a41043b-ebb4-4b4c-9c0c-f8f171ae6fba",
+          "triggerLimit": null,
+          "description": "Returns a CSV file containing all reports within the given time period. The \"1d\" file is updated daily in the early morning. The \"30d\" file is updated weekly on Sunday morning. The \"forever\" file is updated monthly on the 15th of the month. All updates occur between 2am-3am UTC.",
+          "name": "Get Complete Download",
+          "tag": "#Bitcoin Abuse DB",
+          "recordTags": [
+            "bitcoin-abuse-db"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bc44bca9-8fa0-4d0d-b90f-52f50926958f",
+          "steps": [
+            {
+              "uuid": "bc44bca9-8fa0-4d0d-b90f-52f50926958f",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "126ab97c-f8d7-4774-af63-59d2b36a2146",
+                "title": "Bitcoin Abuse DB: Get Complete Download",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "28b10953-d0b4-42d1-99c7-174b9b226de6",
+              "@type": "WorkflowStep",
+              "name": "Get Complete Download",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitcoin Abuse DB",
+                "config": "''",
+                "params": {
+                  "time_period": "1d"
+                },
+                "version": "1.0.0",
+                "connector": "bitcoin-abuse-db",
+                "operation": "get_all_reports",
+                "operationTitle": "Get Complete Download",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "f160d363-6f98-4aac-9af0-940827c9aed1",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Complete Download",
+              "sourceStep": "/api/3/workflow_steps/bc44bca9-8fa0-4d0d-b90f-52f50926958f",
+              "targetStep": "/api/3/workflow_steps/28b10953-d0b4-42d1-99c7-174b9b226de6"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
