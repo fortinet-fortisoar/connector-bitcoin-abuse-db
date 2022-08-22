@@ -7,7 +7,7 @@
     "icon_small_name": "bitcoinabusedb32x32.png",
     "icon_large_name": "bitcoinabusedb80x80.png",
     "category": "Vulnerability and Risk Management",
-    "help_online": "https://github.com/bidisha-spryiq/connector-bitcoin-abuse-db/blob/develop/docs/BitcoinAbuseDBConnectorDoc.md",
+    "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/bitcoin-abuse-db/379/bitcoin-abuse-db-v1-0-0",
     "cs_compatible": true,
     "cs_approved": false,
     "configuration": {
